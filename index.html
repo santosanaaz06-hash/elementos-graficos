@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protótipo - Editor Visual POO</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🎨 Editor Visual - Prototipação</h1>
+        <p>Personalize o elemento em tempo real</p>
+    </header>
+
+    <main class="container">
+        <section class="area-visual">
+            <h2>Área de Prototipação</h2>
+            <div id="palco" class="palco">
+                <div id="elemento" class="elemento">Elemento</div>
+            </div>
+        </section>
+
+        <aside class="painel-controle">
+            <h2>Controles</h2>
+
+            <div class="grupo-controle">
+                <label for="texto">Texto:</label>
+                <input type="text" id="texto" value="Elemento">
+            </div>
+
+            <div class="grupo-controle">
+                <label for="corFundo">Cor de Fundo:</label>
+                <input type="color" id="corFundo" value="#3498db">
+            </div>
+
+            <div class="grupo-controle">
+                <label for="corTexto">Cor do Texto:</label>
+                <input type="color" id="corTexto" value="#ffffff">
+            </div>
+
+            <div class="grupo-controle">
+                <label for="largura">Largura: <span id="valorLargura">200</span>px</label>
+                <input type="range" id="largura" min="50" max="500" value="200">
+            </div>
+
+            <div class="grupo-controle">
+                <label for="altura">Altura: <span id="valorAltura">100</span>px</label>
+                <input type="range" id="altura" min="50" max="400" value="100">
+            </div>
+
+            <div class="grupo-controle">
+                <label for="bordaRaio">Arredondamento: <span id="valorRaio">8</span>px</label>
+                <input type="range" id="bordaRaio" min="0" max="100" value="8">
+            </div>
+
+            <div class="grupo-controle">
+                <label for="fonteTamanho">Tamanho da Fonte: <span id="valorFonte">16</span>px</label>
+                <input type="range" id="fonteTamanho" min="10" max="48" value="16">
+            </div>
+
+            <div class="grupo-controle">
+                <label for="rotacao">Rotação: <span id="valorRotacao">0</span>°</label>
+                <input type="range" id="rotacao" min="-180" max="180" value="0">
+            </div>
+
+            <button id="btnResetar" class="btn-resetar">🔄 Resetar</button>
+        </aside>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
