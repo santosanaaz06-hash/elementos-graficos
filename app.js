@@ -1,4 +1,4 @@
-/class ElementoVisual {
+class ElementoVisual {
     constructor(seletor) {
         this.elemento = document.querySelector(seletor);
 
@@ -18,7 +18,7 @@
             rotacao: 0
         };
 
-        this._estadoInicial = { ...this._estado };
+        this._estadoInicial = Object.assign({}, this._estado);
 
         this.renderizar();
     }
@@ -29,11 +29,11 @@
     }
 
     obterEstado() {
-        return { ...this._estado };
+        return Object.assign({}, this._estado);
     }
 
     resetar() {
-        this._estado = { ...this._estadoInicial };
+        this._estado = Object.assign({}, this._estadoInicial);
         this.renderizar();
     }
 
@@ -73,17 +73,19 @@ class PainelControle {
             { id: 'rotacao',      chave: 'rotacao',      numero: true, label: 'valorRotacao' }
         ];
 
-        controles.forEach((item) => {
+        const self = this;
+
+        controles.forEach(function (item) {
             const input = document.getElementById(item.id);
             if (!input) return;
 
-            input.addEventListener('input', (e) => {
+            input.addEventListener('input', function (e) {
                 let valor = e.target.value;
                 if (item.numero) valor = Number(valor);
 
                 const dados = {};
                 dados[item.chave] = valor;
-                this.elemento.atualizarPropriedades(dados);
+                self.elemento.atualizarPropriedades(dados);
 
                 if (item.label) {
                     const span = document.getElementById(item.label);
@@ -94,9 +96,9 @@ class PainelControle {
 
         const btn = document.getElementById('btnResetar');
         if (btn) {
-            btn.addEventListener('click', () => {
-                this.elemento.resetar();
-                this._sincronizarInputs();
+            btn.addEventListener('click', function () {
+                self.elemento.resetar();
+                self._sincronizarInputs();
             });
         }
     }
@@ -123,7 +125,7 @@ class PainelControle {
 
     _sincronizarLabels() {
         const e = this.elemento.obterEstado();
-        const set = (id, val) => {
+        const set = function (id, val) {
             const el = document.getElementById(id);
             if (el) el.textContent = val;
         };
@@ -144,6 +146,6 @@ class Aplicacao {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function () {
     new Aplicacao();
 });

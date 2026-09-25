@@ -79,6 +79,13 @@ header p {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     padding: 10px;
     text-align: center;
+
+    width: 200px;
+    height: 100px;
+    background-color: #3498db;
+    color: #ffffff;
+    border-radius: 8px;
+    font-size: 16px;
 }
 
 .painel-controle {
